@@ -17,6 +17,10 @@
     &__complete {
         text-decoration: line-through;
         color: color.mix(#fff, #191919, 50%);
+
+        span {
+            font-weight: 400 !important;
+        }
     }
 
     &__custom-checkbox {
@@ -54,6 +58,7 @@
         span {
             margin: 0 30px 0 18px;
             line-height: 22px;
+            font-weight: 500;
         }
         
     }
