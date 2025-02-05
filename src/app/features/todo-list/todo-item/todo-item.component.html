@@ -1,7 +1,7 @@
 <div class="todo-item">
     <label class="todo-item__custom-checkbox" [ngClass]="{'todo-item__complete': todoItem.completed}">
         <input id="{{ 'todoItem' + todoItem.id }}" type="checkbox" [checked]="todoItem.completed" (change)="completeTodoItem(todoItem)">
-        <span>{{ todoItem.todo }}</span>
+        <span class="font-medium">{{ todoItem.todo }}</span>
     </label>
     
     <div class="flex items-center gap-1">
