@@ -1,0 +1,43 @@
+@if (isLoading) {
+    <div class="loading-container">
+        <div class="loader"></div>
+    </div>
+}
+@else {
+    <div class="todo-list flex justify-center">
+        <div class="todo-list__content px-3 py-7">
+            <h1 class="font-semibold text-primary text-center text-2xl mb-6">Todo List</h1>
+
+            @if (allTasksCompleted) {
+                <p class="my-8 text-center">
+                    🎉 Fantastic! All tasks are finished. Keep up the great work!
+                </p>
+            }
+            
+            @for (todoItem of todoItems; track todoItem.id; let index = $index) {
+                <app-todo-item
+                    [todoItem]="todoItem"
+                    [index]="index"
+                    (removeItem)="removeItemHandler($event)"
+                    (completeItem)="completeItemHandler($event)"
+                    (updateItem)="updateItemHandler($event)"
+                ></app-todo-item>
+            }
+          
+            <form [formGroup]="todoForm" class="todo-list__form" (submit)="submit()">
+                <input type="text" placeholder="Task name" formControlName="todo" class="todo-list__title-control">
+                <button type="submit" class="todo-list__form-btn">
+                    {{ itemToUpdate ? 'Update' : 'Save' }}
+                </button>
+                @if (itemToUpdate) {
+                    <button type="button" class="todo-list__form-btn todo-list__form-btn--secondary" (click)="cancelEdit()">
+                        Cancel
+                    </button>
+                }
+            </form>
+        </div>
+    </div>
+}
+
+  
+  
